@@ -1,0 +1,41 @@
+#include "pzhelp"
+PROGRAM {
+    int N, i;
+    int A[1127], B[1127], a[1127], b[1127], ar[1127], par[1127];
+    char symbol[1127];
+    N = READ_INT();
+    SKIPLINE();
+    FOR (i, 1 TO N) {
+    symbol[i] = getchar(); a[i] = READ_INT(); b[i] = READ_INT(); A[i] = READ_INT(); B[i] = READ_INT();
+    if ( (b[i]==0) OR (B[i]==0))
+        WRITELN ("error");
+    else {
+    switch (symbol[i]) {
+        case '+' : 
+            ar[i] = a[i] + A[i];
+            if (b[i] = B[i]) par[i] = b[i];
+            else par[i] = b[i] * B[i];
+            break;
+        case '-' :
+            ar[i] = a[i] - A[i];
+            if (b[i] = B[i]) par[i] = b[i];
+            else par[i] = b[i] * B[i];
+            break;
+        case '*' :
+            ar[i] = a[i] * A[i];
+            par[i] = b[i] * B[i];
+            break;
+        case '/' :
+            ar[i] = a[i] * b[i];
+            par[i] = A[i] * B[i];
+            break;
+    }
+    while (par[i] != 0) {
+        if ( ((ar[i]>0) AND (ar[i]>par[i])) OR ((ar[i]<=0) AND (-ar[i]>par[i])) ) 
+            ar[i] = ar[i] % par[i]; 
+        else 
+            par[i] = par[i] % ar[i];
+        break; }
+    }
+FOR (i, 1 TO N) WRITELN (ar[i]/par[i], ar[i], par[i]) ; }
+}
