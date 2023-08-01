@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// int maximum() {
-int main() {
+int maximum() {
     int list[20], a, x;
     for (a = 0; a <= 19; a++) {
     cin >> list[a];
